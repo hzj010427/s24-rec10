@@ -1,47 +1,51 @@
 #board {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
   background-color: #2196F3;
-  padding: 10px
+  padding: 10px;
+  max-width: 90vmin;
+  margin: 20px auto;
 }
 
 .cell {
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 30px;
-  height: 25vmin;
-  text-align: center;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5vmin;
+  aspect-ratio: 1;
 }
 
 #bottombar {
-  height: 5vh;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
 }
 
 #instructions {
-  height: 5vh;
-  background-color: white;
-  padding: 0px;
-  margin: 0px;
+  padding: 10px;
+  margin: 10px 0;
   text-align: center;
   border: 1px solid black;
+  font-size: 2vw;
 }
 
 #bottombar button {
-  width: 50%;
-  /* height: 100%; */
-  margin: 0;
-  padding: 0;
-  position: relative;
-  float: left;
-  font-size: 2vw
+  flex: 1;
+  margin: 0 5px;
+  padding: 10px 0;
+  font-size: 2vw;
 }
 
-html,
-body {
+html, body {
   height: 100%;
   margin: 0;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.playable { background-color: red;}
+.playable:hover {
+  background-color: lightgreen;
+}
