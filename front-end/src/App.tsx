@@ -57,9 +57,20 @@ class App extends React.Component<Props, GameState> {
    */
   play(x: number, y: number): React.MouseEventHandler {
     return async (e) => {
+      console.log(`play clicked: x=${x}, y=${y}`);
       // prevent the default behavior on clicking a link; otherwise, it will jump to a new page.
       e.preventDefault();
       const response = await fetch(`/play?x=${x}&y=${y}`)
+      const json = await response.json();
+      this.setState({ cells: json['cells'], winner: json['winner'], currentPlayer: json['currentPlayer'] });
+    }
+  }
+
+  undo(): React.MouseEventHandler {
+    return async (e) => {
+      console.log('undo clicked');
+      e.preventDefault();
+      const response = await fetch('/undo');
       const json = await response.json();
       this.setState({ cells: json['cells'], winner: json['winner'], currentPlayer: json['currentPlayer'] });
     }
@@ -131,7 +142,7 @@ class App extends React.Component<Props, GameState> {
         <div id="bottombar">
           <button onClick={/* get the function, not call the function */this.newGame}>New Game</button>
           {/* Exercise: implement Undo function */}
-          <button>Undo</button>
+          <button onClick={this.undo()}>Undo</button>
         </div>
       </div>
     );
