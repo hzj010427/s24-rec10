@@ -11,6 +11,14 @@ enum Player {
     Player(int value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        if (this == PLAYER0)
+            return "PLAYER0";
+        else
+            return "PLAYER1";
+    }
 }
 
 public class Game {
